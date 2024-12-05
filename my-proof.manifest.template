@@ -1,3 +1,6 @@
+loader.entrypoint = "/usr/bin/python3"
+loader.argv = ["-m", "my_proof"]
+
 # Adjust this as needed.
 sgx.enclave_size = "256M"
 
