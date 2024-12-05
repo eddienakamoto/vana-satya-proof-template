@@ -56,27 +56,24 @@ jobs:
         echo "Searching for entrypoint.manifest:"
         find . -name "entrypoint.manifest" -exec ls -l {} \;
 
-    - name: Create /gramine/app_files Directory
-      run: |
-        mkdir -p /gramine/app_files
-
-    - name: Copy Generated Files to /gramine/app_files
-      run: |
-        cp gsc/build/entrypoint.manifest /gramine/app_files/
-
-    - name: Check Generated Manifest
-      run: |
-        cat /gramine/app_files/entrypoint.manifest
-
     - name: Debug GSC Build Output
       run: |
         cd gsc
+
+        mkdir -p gramine 
+        mkdir -p gramine/app_files
+        cp build/entrypoint.manifest /gramine/app_files/
+
         echo "Checking output directory:"
         ls -l ../
         echo "Listing files in the current directory:"
         ls -l
         echo "Listing files in the app directory:"
         ls -l /gramine/app_files
+
+    - name: Check Generated Manifest
+      run: |
+        cat /gramine/app_files/entrypoint.manifest
 
     - name: Sign GSC image
       run: |
