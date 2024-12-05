@@ -64,7 +64,7 @@ jobs:
       run: |
         cp gsc/build/entrypoint.manifest /gramine/app_files/
 
-    - name: Debug: Check Generated Manifest
+    - name: Check Generated Manifest
       run: |
         cat /gramine/app_files/entrypoint.manifest
 
