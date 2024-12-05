@@ -62,14 +62,12 @@ jobs:
 
         mkdir -p gramine 
         mkdir -p gramine/app_files
-        cp build/entrypoint.manifest /gramine/app_files/
+        cp ./build/gsc-my-proof/entrypoint.manifest ./gramine/app_files/
 
         echo "Checking output directory:"
         ls -l ../
         echo "Listing files in the current directory:"
         ls -l
-        echo "Listing files in the app directory:"
-        ls -l /gramine/app_files
 
     - name: Sign GSC image
       run: |
