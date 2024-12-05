@@ -50,9 +50,23 @@ jobs:
         cd gsc
         ./gsc build my-proof ../my-proof.manifest.template -c ../config.yaml
 
-    - name: Check Signing Key
+    - name: Locate entrypoint.manifest
       run: |
-        ls -l signing_key.pem
+        cd gsc
+        echo "Searching for entrypoint.manifest:"
+        find . -name "entrypoint.manifest" -exec ls -l {} \;
+
+    - name: Create /gramine/app_files Directory
+      run: |
+        mkdir -p /gramine/app_files
+
+    - name: Copy Generated Files to /gramine/app_files
+      run: |
+        cp gsc/build/entrypoint.manifest /gramine/app_files/
+
+    - name: Debug: Check Generated Manifest
+      run: |
+        cat /gramine/app_files/entrypoint.manifest
 
     - name: Debug GSC Build Output
       run: |
