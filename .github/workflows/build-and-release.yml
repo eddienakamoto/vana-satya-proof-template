@@ -71,10 +71,6 @@ jobs:
         echo "Listing files in the app directory:"
         ls -l /gramine/app_files
 
-    - name: Check Generated Manifest
-      run: |
-        cat /gramine/app_files/entrypoint.manifest
-
     - name: Sign GSC image
       run: |
         cd gsc
