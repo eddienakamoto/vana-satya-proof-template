@@ -54,6 +54,16 @@ jobs:
       run: |
         ls -l signing_key.pem
 
+    - name: Debug GSC Build Output
+      run: |
+        cd gsc
+        echo "Checking output directory:"
+        ls -l ../
+        echo "Listing files in the current directory:"
+        ls -l
+        echo "Listing files in the app directory:"
+        ls -l /gramine/app_files
+
     - name: Sign GSC image
       run: |
         cd gsc
@@ -64,7 +74,7 @@ jobs:
         echo "Inspecting configuration file:"
         cat ../config.yaml
         chmod 600 ../signing_key.pem
-        ./gsc sign-image my-proof ../signing_key.pem -c ../config.yaml --verbose
+        ./gsc sign-image my-proof ../signing_key.pem -c ../config.yaml
 
     - name: Export GSC image to file
       run: |
