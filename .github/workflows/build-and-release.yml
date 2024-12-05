@@ -61,19 +61,13 @@ jobs:
     - name: Sign GSC image
       run: |
         cd gsc
-
-        # Debug manifest and configuration before signing
         echo "Inspecting manifest:"
         cat ../my-proof.manifest.template
         echo "Inspecting signing key:"
         ls -l ../signing_key.pem
         echo "Inspecting configuration file:"
         cat ../config.yaml
-
-        # Ensure signing key permissions are correct
         chmod 600 ../signing_key.pem
-
-        # Perform the signing with verbose output
         ./gsc sign-image my-proof ../signing_key.pem -c ../config.yaml --verbose
 
     - name: Export GSC image to file
