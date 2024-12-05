@@ -50,10 +50,6 @@ jobs:
         cd gsc
         ./gsc build my-proof ../my-proof.manifest.template -c ../config.yaml
 
-    - name: Check Generated Manifest
-      run: |
-        cat /gramine/app_files/entrypoint.manifest
-
     - name: Check Signing Key
       run: |
         ls -l signing_key.pem
