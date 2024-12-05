@@ -55,7 +55,8 @@ jobs:
         cat /gramine/app_files/entrypoint.manifest
 
     - name: Debug: Check Signing Key
-      run: ls -l signing_key.pem
+      run: |
+        ls -l signing_key.pem
 
     - name: Sign GSC image
       run: |
